@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-03T16:56:40.604654" rpa="false" schemaversion="5">
+<suite id="s1" name="Arquivo de Testes" source="C:\Users\joaov\Downloads\Teste de API Carlos\Testes de API\Arquivo_de_Testes.robot">
+<test id="s1-t1" name="Listar Usuários" line="11">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:40.684863" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${URL_BASE}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:40.684653" elapsed="0.000375"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:40.685318" level="WARN">You might have an = symbol in url. You better place 'url=' before, example: 'url=/your-url/foo?param=a' or use '/your-url/foo  params=param=a' or escape it</msg>
+<msg time="2025-09-03T16:56:40.685696" level="FAIL">TypeError: RequestsOnSessionKeywords.get_on_session() missing 1 required positional argument: 'url'</msg>
+<var>${resposta}</var>
+<arg>api</arg>
+<arg>/users?page=2</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:40.685214" elapsed="0.001058">TypeError: RequestsOnSessionKeywords.get_on_session() missing 1 required positional argument: 'url'</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:40.686526" elapsed="0.000018"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Lista de usuários: ${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:40.686728" elapsed="0.000012"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:40.682667" elapsed="0.004252">TypeError: RequestsOnSessionKeywords.get_on_session() missing 1 required positional argument: 'url'</status>
+</test>
+<test id="s1-t2" name="Criar Usuário" line="18">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:40.688024" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${URL_BASE}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:40.687885" elapsed="0.000273"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-03T16:56:40.689342" level="INFO">${corpo} = {'nome': 'Carlos', 'trabalho': 'Tester'}</msg>
+<var>${corpo}</var>
+<arg>nome=Carlos</arg>
+<arg>trabalho=Tester</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-03T16:56:40.688532" elapsed="0.000878"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:41.309079" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '40', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Carlos", "trabalho": "Tester"}' 
+ </msg>
+<msg time="2025-09-03T16:56:41.309883" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=401, reason=Unauthorized 
+ headers={'Date': 'Wed, 03 Sep 2025 19:56:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '27', 'Connection': 'keep-alive', 'CF-RAY': '9797cfce5da5a010-GRU', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"1b-FQ1mIOMgD7jlZN53VsiSdXzsYTY"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Ratelimit-Limit': '100', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Remaining': '99', 'Ratelimit-Reset': '60', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=cMDjBQH69gkFrSmgQMl7WTPVFC2mRHcI3q8FzpL%2FCZs%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1756929400"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=cMDjBQH69gkFrSmgQMl7WTPVFC2mRHcI3q8FzpL%2FCZs%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1756929400"', 'Vary': 'Origin', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Request-Id': '81495913-b16f-3062-d2b4-5761588ea52e', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Server': 'cloudflare', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=30965&amp;min_rtt=30582&amp;rtt_var=11742&amp;sent=5&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2832&amp;recv_bytes=883&amp;delivery_rate=94173&amp;cwnd=251&amp;unsent_bytes=0&amp;cid=03171ca782946363&amp;ts=438&amp;x=0"'} 
+ body={"error":"Missing API key"} 
+ </msg>
+<msg time="2025-09-03T16:56:41.310512" level="INFO">C:\Users\joaov\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-09-03T16:56:41.316054" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: https://reqres.in/api/users</msg>
+<var>${resposta}</var>
+<arg>api</arg>
+<arg>/users</arg>
+<arg>json=${corpo}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:40.689899" elapsed="0.638142">HTTPError: 401 Client Error: Unauthorized for url: https://reqres.in/api/users</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:41.330662" elapsed="0.000129"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Usuário criado: ${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:41.331563" elapsed="0.000095"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:40.687533" elapsed="0.646005">HTTPError: 401 Client Error: Unauthorized for url: https://reqres.in/api/users</status>
+</test>
+<test id="s1-t3" name="Atualizar Usuário" line="26">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:41.359379" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${URL_BASE}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:41.356025" elapsed="0.003958"/>
+</kw>
+<kw name="Create On Dictionary">
+<msg time="2025-09-03T16:56:41.364668" level="FAIL">No keyword with name 'Create On Dictionary' found. Did you mean:
+    BuiltIn.Create Dictionary</msg>
+<var>${corpo}</var>
+<arg>nome=Eduardo</arg>
+<arg>trabalho=QA</arg>
+<status status="FAIL" start="2025-09-03T16:56:41.364433" elapsed="0.000442">No keyword with name 'Create On Dictionary' found. Did you mean:
+    BuiltIn.Create Dictionary</status>
+</kw>
+<kw name="PUT Session">
+<var>${resposta}</var>
+<arg>api</arg>
+<arg>/users/2</arg>
+<arg>json=${corpo}</arg>
+<status status="NOT RUN" start="2025-09-03T16:56:41.365843" elapsed="0.000117"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:41.367791" elapsed="0.000193"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Usuário atualizado: ${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:41.369289" elapsed="0.000083"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:41.353133" elapsed="0.018262">No keyword with name 'Create On Dictionary' found. Did you mean:
+    BuiltIn.Create Dictionary</status>
+</test>
+<test id="s1-t4" name="Deletar Usuário" line="34">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:41.375613" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${URL_BASE}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:41.374910" elapsed="0.001219"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:41.705550" level="INFO">DELETE Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-09-03T16:56:41.705860" level="INFO">DELETE Response : url=https://reqres.in/api/users/2 
+ status=401, reason=Unauthorized 
+ headers={'Date': 'Wed, 03 Sep 2025 19:56:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '27', 'Connection': 'keep-alive', 'CF-RAY': '9797cfd21a4d7f14-GRU', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"1b-FQ1mIOMgD7jlZN53VsiSdXzsYTY"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Ratelimit-Limit': '100', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Remaining': '98', 'Ratelimit-Reset': '60', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=cMDjBQH69gkFrSmgQMl7WTPVFC2mRHcI3q8FzpL%2FCZs%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1756929400"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=cMDjBQH69gkFrSmgQMl7WTPVFC2mRHcI3q8FzpL%2FCZs%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1756929400"', 'Vary': 'Origin', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Request-Id': 'cafdf2ab-9157-6e8a-6d2e-f87841829882', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Server': 'cloudflare', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=31448&amp;min_rtt=28630&amp;rtt_var=12749&amp;sent=4&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2833&amp;recv_bytes=792&amp;delivery_rate=100593&amp;cwnd=251&amp;unsent_bytes=0&amp;cid=d65eb3cdc2177062&amp;ts=236&amp;x=0"'} 
+ body={"error":"Missing API key"} 
+ </msg>
+<msg time="2025-09-03T16:56:41.706059" level="INFO">C:\Users\joaov\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-09-03T16:56:41.706989" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: https://reqres.in/api/users/2</msg>
+<var>${resposta}</var>
+<arg>api</arg>
+<arg>/users/2</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:41.376870" elapsed="0.331662">HTTPError: 401 Client Error: Unauthorized for url: https://reqres.in/api/users/2</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>204</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:41.709505" elapsed="0.000105"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Usuário deletado com sucesso!</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:41.710344" elapsed="0.000067"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:41.373463" elapsed="0.337694">HTTPError: 401 Client Error: Unauthorized for url: https://reqres.in/api/users/2</status>
+</test>
+<test id="s1-t5" name="Listar Livros" line="43">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:41.713862" level="INFO">Creating Session using : alias=api_livros, url=https://minha-biblioteca.com/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_livros</arg>
+<arg>${URL_BASE_BIBLIOTECA}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:41.713129" elapsed="0.001381"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:41.768285" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66CA50&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:41.977513" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66E990&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:42.380175" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66EFD0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:42.382689" level="FAIL">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F250&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${resposta}</var>
+<arg>api_livros</arg>
+<arg>/livros</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:41.715790" elapsed="0.700464">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F250&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:42.417201" elapsed="0.000081"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Lista de livros: ${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:42.417766" elapsed="0.000105"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:41.712463" elapsed="0.707236">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F250&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<test id="s1-t6" name="Cadastrar Livro" line="51">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:42.425407" level="INFO">Creating Session using : alias=api_livros, url=https://minha-biblioteca.com/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_livros</arg>
+<arg>${URL_BASE_BIBLIOTECA}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:42.424225" elapsed="0.001673"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-03T16:56:42.428696" level="INFO">${corpo} = {'titulo': 'Dom Casmurro', 'autor': 'Machado de Assis', 'ano': '1899'}</msg>
+<var>${corpo}</var>
+<arg>titulo=Dom Casmurro</arg>
+<arg>autor=Machado de Assis</arg>
+<arg>ano=1899</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-03T16:56:42.428250" elapsed="0.000504"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:42.433325" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F890&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:42.635299" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F9D0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:43.039350" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F750&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:43.042599" level="FAIL">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66FED0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${resposta}</var>
+<arg>api_livros</arg>
+<arg>/livros</arg>
+<arg>json=${corpo}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:42.429374" elapsed="0.624607">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66FED0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:43.054823" elapsed="0.000086"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Livro cadastrado: ${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:43.055748" elapsed="0.000084"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:42.421858" elapsed="0.634689">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66FED0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<test id="s1-t7" name="Atualizar Livro" line="59">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:43.060652" level="INFO">Creating Session using : alias=api_livros, url=https://minha-biblioteca.com/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_livros</arg>
+<arg>${URL_BASE_BIBLIOTECA}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:43.060256" elapsed="0.001867"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-03T16:56:43.069934" level="INFO">${corpo} = {'titulo': 'Dom Casmurro (Edição Revisada)', 'autor': 'Machado de Assis', 'ano': '1900'}</msg>
+<var>${corpo}</var>
+<arg>titulo=Dom Casmurro (Edição Revisada)</arg>
+<arg>autor=Machado de Assis</arg>
+<arg>ano=1900</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-03T16:56:43.068272" elapsed="0.001825"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:43.079120" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD7687D0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.284334" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768690&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.686713" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768910&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.691003" level="FAIL">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros/1 (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768B90&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${resposta}</var>
+<arg>api_livros</arg>
+<arg>/livros/1</arg>
+<arg>json=${corpo}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:43.071511" elapsed="0.636672">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros/1 (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768B90&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:43.709431" elapsed="0.000104"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Livro atualizado: ${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:43.710377" elapsed="0.000127"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:43.058751" elapsed="0.653126">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros/1 (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768B90&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<test id="s1-t8" name="Deletar Livro" line="67">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:43.724980" level="INFO">Creating Session using : alias=api_livros, url=https://minha-biblioteca.com/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_livros</arg>
+<arg>${URL_BASE_BIBLIOTECA}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-09-03T16:56:43.722534" elapsed="0.003632"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-09-03T16:56:43.734231" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD7691D0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.968913" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD769090&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:44.420406" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F890&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:44.423777" level="FAIL">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros/1 (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F750&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</msg>
+<var>${resposta}</var>
+<arg>api_livros</arg>
+<arg>/livros/1</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-09-03T16:56:43.727802" elapsed="0.715723">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros/1 (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F750&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resposta.status_code}</arg>
+<arg>204</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:44.446332" elapsed="0.000166"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>&gt;&gt;&gt; Livro deletado com sucesso!</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-09-03T16:56:44.449839" elapsed="0.000231"/>
+</kw>
+<status status="FAIL" start="2025-09-03T16:56:43.715327" elapsed="0.736221">ConnectionError: HTTPSConnectionPool(host='minha-biblioteca.com', port=443): Max retries exceeded with url: /api/livros/1 (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F750&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)"))</status>
+</test>
+<status status="FAIL" start="2025-09-03T16:56:40.607331" elapsed="3.850752"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="8" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Arquivo de Testes" id="s1" pass="0" fail="8" skip="0">Arquivo de Testes</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-03T16:56:40.685318" level="WARN">You might have an = symbol in url. You better place 'url=' before, example: 'url=/your-url/foo?param=a' or use '/your-url/foo  params=param=a' or escape it</msg>
+<msg time="2025-09-03T16:56:41.768285" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66CA50&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:41.977513" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66E990&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:42.380175" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66EFD0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:42.433325" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F890&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:42.635299" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F9D0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:43.039350" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F750&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros</msg>
+<msg time="2025-09-03T16:56:43.079120" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD7687D0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.284334" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768690&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.686713" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD768910&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.734231" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD7691D0&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:43.968913" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD769090&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+<msg time="2025-09-03T16:56:44.420406" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x0000021CBD66F890&gt;: Failed to resolve 'minha-biblioteca.com' ([Errno 11001] getaddrinfo failed)")': /api/livros/1</msg>
+</errors>
+</robot>
