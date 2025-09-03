@@ -7,7 +7,7 @@
 **Carlos Eduardo Sarubi De Souza**
 
 ## 3) Link do repositório e branch avaliada  
-- [Insira aqui o link do repositório GitHub]  
+- https://github.com/vitorlemosj/CodeReview.git
 - **Branch avaliada:** `main`
 
 ## 4) Resultado do Code Review  
