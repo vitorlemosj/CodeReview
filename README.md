@@ -1,10 +1,10 @@
 # 📋 Relatório de Code Review
 
 ## 1) Nome de quem fez o Code Review  
-**João Vitor**
+**João Vitor Moreira Lemos**
 
 ## 2) Nome do colega que criou o código  
-**Carlos**
+**Carlos Eduardo Sarubi De Souza**
 
 ## 3) Link do repositório e branch avaliada  
 - [Insira aqui o link do repositório GitHub]  
